@@ -1,3 +1,4 @@
+import 'package:expo/network/network.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../widgets/home_page_head.dart';
@@ -18,6 +19,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   void initState() {
     super.initState();
     tabController = TabController(length: controller.tabs.length, vsync: this, initialIndex: 1)..addListener(() {});
+    getList();
+  }
+
+  void getList() async {
+    final result = await Network.get("/api/song/info/2");
+    print("=====${result}=====");
   }
 
   @override
