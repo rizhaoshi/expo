@@ -23,8 +23,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   }
 
   void getList() async {
-    final result = await Network.get("/api/song/info/2");
-    print("=====${result}=====");
   }
 
   @override
