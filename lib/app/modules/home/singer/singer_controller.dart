@@ -1,12 +1,12 @@
-import 'package:flutter_easyrefresh/easy_refresh.dart';
-import 'package:expo/app/models/song_model.dart';
-import 'package:expo/app/services/song_service.dart';
-import 'package:expo/common/config/api_config.dart';
+import 'package:expo/app/models/user_model.dart';
 import 'package:get/get.dart';
+import 'package:flutter_easyrefresh/easy_refresh.dart';
+import '../../../../common/config/api_config.dart';
+import '../../../services/user_service.dart';
 
-class SongController extends GetxController {
+class SingerController extends GetxController {
   late EasyRefreshController refreshController;
-  List<SongItem> songs = SongList([]).list;
+  List<UserItem> singers = UserList([]).list;
   int page = 1;
   int limit = Api.limit;
   bool hasMore = true;
@@ -17,24 +17,24 @@ class SongController extends GetxController {
   void onInit() {
     super.onInit();
     refreshController = EasyRefreshController();
-    getSongList();
+    getSingerList();
   }
 
-  Future getSongList({bool push = false}) async {
+  Future getSingerList({bool push = false}) async {
     try {
       //请求获取数据
-      Map<String, dynamic> result = await SongService.getSongList(page: page, limit: limit);
+      Map<String, dynamic> result = await UserService.getUserList(page: page, limit: limit);
       // 将数据转成实体类
-      SongList songList = SongList.fromJson(result['data']);
+      UserList userList = UserList.fromJson(result['data']);
       hasMore = page * limit < result['total'];
       page++;
       if (push) {
-        songs.addAll(songList.list);
+        singers.addAll(userList.list);
       } else {
-        songs = songList.list;
+        singers = userList.list;
       }
       isError = false;
-      update(['home_song_list_view']);
+      update(['home_singer_list_view']);
     } catch (e) {
       isError = true;
       errorMag = e.toString();
@@ -54,13 +54,13 @@ class SongController extends GetxController {
 
   onRefresh() async {
     page = 1;
-    await getSongList();
+    await getSingerList();
     refreshController.finishRefresh();
     refreshController.resetLoadState();
   }
 
   onLoad() async {
-    if (hasMore) await getSongList(push: true);
+    if (hasMore) await getSingerList(push: true);
     refreshController.finishLoad(noMore: !hasMore);
   }
 }

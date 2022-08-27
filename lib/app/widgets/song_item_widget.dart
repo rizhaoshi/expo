@@ -55,8 +55,8 @@ class SongItemView extends StatelessWidget {
                   child: AvatarRoleName(
                     avatar: songItem.user.coverPictureUrl,
                     nickname: songItem.user.nickname,
-                    showType: false,
-                    type: "NORMAL_USER",
+                    // showType: false,
+                    // type: "NORMAL_USER",
                   ),
                 ),
                 const SizedBox(width: 4),

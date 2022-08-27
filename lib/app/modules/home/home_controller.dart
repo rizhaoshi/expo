@@ -1,5 +1,6 @@
-import 'package:expo/app/modules/home/song/song_page.dart';
 import 'package:flutter/material.dart';
+import 'package:expo/app/modules/home/singer/singer_page.dart';
+import 'package:expo/app/modules/home/song/song_page.dart';
 import 'package:get/get.dart';
 import '../../widgets/keep_alive_widget.dart';
 
@@ -22,7 +23,7 @@ class HomeController extends GetxController{
     tabContents = [
       KeepAliveWidget(SongPage()),
       KeepAliveWidget(Text("2222222")),
-      KeepAliveWidget(Text("3333333")),
+      KeepAliveWidget(SingerPage()),
       KeepAliveWidget(Text("4444444")),
       KeepAliveWidget(Text("5555555")),
       KeepAliveWidget(Text("6666666")),

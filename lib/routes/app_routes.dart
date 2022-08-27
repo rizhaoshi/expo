@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import '../app/modules/home/home_binding.dart';
 import '../app/modules/home/home_page.dart';
+import '../app/modules/home/singer/singer_binding.dart';
+import '../app/modules/home/singer/singer_page.dart';
 import '../app/modules/home/song/song_binding.dart';
 import '../app/modules/home/song/song_page.dart';
 import '../app/modules/main/main_binding.dart';
@@ -24,6 +26,7 @@ abstract class AppPages {
     GetPage(name: Routes.VIDEO, page: () => VideoPage(), binding: VideoBinding()),
     GetPage(name: Routes.MINE, page: () => MinePage(), binding: MineBinding()),
     GetPage(name: Routes.SONG, page: () => SongPage(), binding: SongBinding()),
+    GetPage(name: Routes.SINGER, page: () => SingerPage(), binding: SingerBinding()),
   ];
 }
 
@@ -55,4 +58,7 @@ abstract class Routes {
   //首页频道页
   //歌曲
   static const SONG = "/song";
+
+  //歌手
+  static const SINGER = "/singer";
 }

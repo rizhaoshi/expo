@@ -7,22 +7,24 @@ class CommentLikeRead extends StatelessWidget {
   final int? thumbUpCount;
   final int? readCount;
 
-  const CommentLikeRead({Key? key, this.commentCount, this.thumbUpCount, this.readCount}) : super(key: key);
+  const CommentLikeRead(
+      {Key? key, this.commentCount, this.thumbUpCount, this.readCount})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        _iconText('comment', commentCount.toString()),
+        _iconText('comment', commentCount),
         const SizedBox(width: 4),
-        _iconText('like', thumbUpCount.toString()),
+        _iconText('like', thumbUpCount),
         const SizedBox(width: 4),
-        _iconText('read', readCount.toString()),
+        _iconText('read', readCount),
       ],
     );
   }
 
-  Widget _iconText(String icon, String count) {
+  Widget _iconText(String icon, int? count) {
     return Expanded(
         child: Row(
       children: [
@@ -34,7 +36,7 @@ class CommentLikeRead extends StatelessWidget {
         const SizedBox(width: 4),
         Expanded(
             child: Text(
-          count,
+          CommonUtils.formatCharCount(count),
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
           style: const TextStyle(color: AppColors.un3active, fontSize: 10),

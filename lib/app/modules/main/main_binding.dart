@@ -2,6 +2,7 @@ import 'package:expo/app/modules/home/home_controller.dart';
 import 'package:expo/app/modules/home/song/song_controller.dart';
 import 'package:get/get.dart';
 
+import '../home/singer/singer_controller.dart';
 import 'main_controller.dart';
 
 class MainBinding extends Bindings {
@@ -15,6 +16,9 @@ class MainBinding extends Bindings {
     );
     Get.lazyPut<SongController>(
       () => SongController(),
+    );
+    Get.lazyPut<SingerController>(
+      () => SingerController(),
     );
   }
 }
