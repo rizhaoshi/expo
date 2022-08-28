@@ -1,4 +1,3 @@
-import 'package:expo/network/network.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../widgets/home_page_head.dart';

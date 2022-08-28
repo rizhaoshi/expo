@@ -8,8 +8,16 @@ class AvatarRoleName extends StatelessWidget {
   final String? nickname;
   final String? type;
   final bool showType;
+  final double avatarSize;
 
-  const AvatarRoleName({Key? key, required this.avatar, this.nickname, this.type, this.showType = true}) : super(key: key);
+  const AvatarRoleName({
+    Key? key,
+    required this.avatar,
+    this.nickname,
+    this.type,
+    this.showType = true,
+    this.avatarSize = 25.0,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +35,14 @@ class AvatarRoleName extends StatelessWidget {
 
   Widget _avatar() {
     return SizedBox(
-      width: 20,
-      height: 20,
+      width: avatarSize,
+      height: avatarSize,
       child: ClipOval(
-        child: FadeInImage.assetNetwork(placeholder: CommonUtils.getCommonImageByName('lazy_1'), image: avatar),
+        child: FadeInImage.assetNetwork(
+          placeholder: CommonUtils.getCommonImageByName('lazy_1'),
+          image: avatar,
+          width: double.infinity,
+        ),
       ),
     );
   }

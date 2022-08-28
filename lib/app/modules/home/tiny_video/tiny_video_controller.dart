@@ -1,12 +1,12 @@
-import 'package:expo/app/models/user_model.dart';
-import 'package:get/get.dart';
+import 'package:expo/app/models/video_model.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
-import '../../../../common/config/api_config.dart';
-import '../../../services/user_service.dart';
+import 'package:expo/common/config/api_config.dart';
+import 'package:get/get.dart';
+import '../../../services/video_service.dart';
 
-class SingerController extends GetxController {
+class TinyVideoController extends GetxController {
   late EasyRefreshController refreshController;
-  List<UserItem> singers = UserList([]).list;
+  List<VideoItem> videos = VideoList([]).list;
   int page = 1;
   int limit = Api.limit;
   bool hasMore = true;
@@ -17,29 +17,41 @@ class SingerController extends GetxController {
   void onInit() {
     super.onInit();
     refreshController = EasyRefreshController();
-    getSingerList();
+    getVideoList();
   }
 
-  Future getSingerList({bool push = false}) async {
+  Future getVideoList({bool push = false}) async {
     try {
       //请求获取数据
-      Map<String, dynamic> result = await UserService.getUserList(page: page, limit: limit);
+      Map<String, dynamic> result = await VideoService.getVideoList(page: page, limit: limit);
       // 将数据转成实体类
-      UserList userList = UserList.fromJson(result['data']);
+      VideoList videoList = VideoList.fromJson(result['data']);
       hasMore = page * limit < result['total'];
       page++;
       if (push) {
-        singers.addAll(userList.list);
+        videos.addAll(videoList.list);
       } else {
-        singers = userList.list;
+        videos = videoList.list;
       }
       isError = false;
-      update(['home_singer_grid_view']);
+      update(['tiny_video_grid_view']);
     } catch (e) {
       isError = true;
       errorMag = e.toString();
       update();
     }
+  }
+
+  onRefresh() async {
+    page = 1;
+    await getVideoList();
+    refreshController.finishRefresh();
+    refreshController.resetLoadState();
+  }
+
+  onLoad() async {
+    if (hasMore) await getVideoList(push: true);
+    refreshController.finishLoad(noMore: !hasMore);
   }
 
   @override
@@ -50,17 +62,5 @@ class SingerController extends GetxController {
   @override
   void onClose() {
     super.onClose();
-  }
-
-  onRefresh() async {
-    page = 1;
-    await getSingerList();
-    refreshController.finishRefresh();
-    refreshController.resetLoadState();
-  }
-
-  onLoad() async {
-    if (hasMore) await getSingerList(push: true);
-    refreshController.finishLoad(noMore: !hasMore);
   }
 }

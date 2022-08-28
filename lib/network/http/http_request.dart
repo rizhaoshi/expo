@@ -24,6 +24,7 @@ class HttpRequest {
     );
     // 没有实例 则创建之
     dio = Dio(baseOptions);
+
     // 添加拦截器
     dio?.interceptors.add(HttpInterceptor());
   }

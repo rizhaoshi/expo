@@ -1,11 +1,17 @@
 import 'package:get/get.dart';
 
+import '../app/modules/home/article/article_binding.dart';
+import '../app/modules/home/article/article_page.dart';
 import '../app/modules/home/home_binding.dart';
 import '../app/modules/home/home_page.dart';
+import '../app/modules/home/home_video/home_video_binding.dart';
+import '../app/modules/home/home_video/home_video_page.dart';
 import '../app/modules/home/singer/singer_binding.dart';
 import '../app/modules/home/singer/singer_page.dart';
 import '../app/modules/home/song/song_binding.dart';
 import '../app/modules/home/song/song_page.dart';
+import '../app/modules/home/tiny_video/tiny_video_binding.dart';
+import '../app/modules/home/tiny_video/tiny_video_page.dart';
 import '../app/modules/main/main_binding.dart';
 import '../app/modules/main/main_page.dart';
 import '../app/modules/mine/mine_binding.dart';
@@ -27,6 +33,9 @@ abstract class AppPages {
     GetPage(name: Routes.MINE, page: () => MinePage(), binding: MineBinding()),
     GetPage(name: Routes.SONG, page: () => SongPage(), binding: SongBinding()),
     GetPage(name: Routes.SINGER, page: () => SingerPage(), binding: SingerBinding()),
+    GetPage(name: Routes.TINY_VIDEO, page: () => TinyVideoPage(), binding: TinyVideoBinding()),
+    GetPage(name: Routes.ARTICLE, page: () => ArticlePage(), binding: ArticleBinding()),
+    GetPage(name: Routes.HOME_VIDEO, page: () => HomeVideoPage(), binding: HomeVideoBinding()),
   ];
 }
 
@@ -61,4 +70,13 @@ abstract class Routes {
 
   //歌手
   static const SINGER = "/singer";
+
+  //小视频
+  static const TINY_VIDEO = "/tiny_video";
+
+  //视频
+  static const ARTICLE = "/article";
+
+  //视频
+  static const HOME_VIDEO = "/home_video";
 }

@@ -1,3 +1,5 @@
+import 'package:expo/app/modules/home/article/article_page.dart';
+import 'package:expo/app/modules/home/tiny_video/tiny_video_page.dart';
 import 'package:flutter/material.dart';
 import 'package:expo/app/modules/home/singer/singer_page.dart';
 import 'package:expo/app/modules/home/song/song_page.dart';
@@ -24,8 +26,8 @@ class HomeController extends GetxController{
       KeepAliveWidget(SongPage()),
       KeepAliveWidget(Text("2222222")),
       KeepAliveWidget(SingerPage()),
-      KeepAliveWidget(Text("4444444")),
-      KeepAliveWidget(Text("5555555")),
+      KeepAliveWidget(TinyVideoPage()),
+      KeepAliveWidget(ArticlePage()),
       KeepAliveWidget(Text("6666666")),
     ];
   }
