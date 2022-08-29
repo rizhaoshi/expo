@@ -1,4 +1,6 @@
 //用户列表模型
+import 'package:expo/app/models/recommend_interface.dart';
+
 class UserList {
   final List<UserItem> list;
 
@@ -10,7 +12,7 @@ class UserList {
 }
 
 //用户详情数据模型
-class UserItem {
+class UserItem implements RecommendInterface{
   final int id;
   final String coverPictureUrl;
   final String nickname;

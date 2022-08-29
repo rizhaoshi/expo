@@ -12,4 +12,6 @@ class Api {
 
   static const String articleListUrl = '/api/article/list';
   static const String articleInfoUrl = '/api/article/info';
+
+  static const String recommendListUrl = '/api/recommend/list';
 }

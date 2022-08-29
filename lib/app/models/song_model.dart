@@ -1,3 +1,4 @@
+import 'package:expo/app/models/recommend_interface.dart';
 import 'package:expo/app/models/user_model.dart';
 
 //歌曲列表模型
@@ -12,7 +13,7 @@ class SongList {
 }
 
 //歌曲详情数据模型
-class SongItem {
+class SongItem implements RecommendInterface {
   final int id;
   final int userId;
   final UserItem user; // 这个是用户模型

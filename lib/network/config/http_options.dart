@@ -8,5 +8,5 @@ class HttpOptions {
 
   // 地址前缀
   // static const String BASE_URL = 'http://dev.duuchin.com';
-  static const String BASE_URL = 'http://192.168.31.163';
+  static const String BASE_URL = 'http://10.0.10.79';
 }

@@ -6,6 +6,8 @@ import '../app/modules/home/home_binding.dart';
 import '../app/modules/home/home_page.dart';
 import '../app/modules/home/home_video/home_video_binding.dart';
 import '../app/modules/home/home_video/home_video_page.dart';
+import '../app/modules/home/recommend/recommend_binding.dart';
+import '../app/modules/home/recommend/recommend_page.dart';
 import '../app/modules/home/singer/singer_binding.dart';
 import '../app/modules/home/singer/singer_page.dart';
 import '../app/modules/home/song/song_binding.dart';
@@ -36,6 +38,7 @@ abstract class AppPages {
     GetPage(name: Routes.TINY_VIDEO, page: () => TinyVideoPage(), binding: TinyVideoBinding()),
     GetPage(name: Routes.ARTICLE, page: () => ArticlePage(), binding: ArticleBinding()),
     GetPage(name: Routes.HOME_VIDEO, page: () => HomeVideoPage(), binding: HomeVideoBinding()),
+    GetPage(name: Routes.RECOMMEND, page: () => RecommendPage(), binding: RecommendBinding()),
   ];
 }
 
@@ -74,9 +77,12 @@ abstract class Routes {
   //小视频
   static const TINY_VIDEO = "/tiny_video";
 
-  //视频
+  //文章
   static const ARTICLE = "/article";
 
   //视频
   static const HOME_VIDEO = "/home_video";
+
+  //推荐
+  static const RECOMMEND = "/recommend";
 }

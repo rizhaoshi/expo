@@ -1,12 +1,24 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../widgets/keep_alive_widget.dart';
+import '../home/singer/singer_page.dart';
+import '../home/song/song_page.dart';
 
 class MusicController extends GetxController {
-  //TODO: Implement MusicController
+  List<Tab> tabs = [
+    Tab(text: "歌曲"),
+    Tab(text: "歌手"),
+  ];
 
-  final count = 0.obs;
+  late List<Widget> tabContents;
+
   @override
   void onInit() {
     super.onInit();
+    tabContents = [
+      KeepAliveWidget(SongPage()),
+      KeepAliveWidget(SingerPage()),
+    ];
   }
 
   @override
@@ -18,6 +30,4 @@ class MusicController extends GetxController {
   void onClose() {
     super.onClose();
   }
-
-  void increment() => count.value++;
 }

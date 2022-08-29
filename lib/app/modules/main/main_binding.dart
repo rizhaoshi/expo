@@ -1,10 +1,12 @@
 import 'package:get/get.dart';
 import '../home/article/article_controller.dart';
 import '../home/home_controller.dart';
+import '../home/recommend/recommend_controller.dart';
 import '../home/song/song_controller.dart';
 import '../home/home_video/home_video_controller.dart';
 import '../home/singer/singer_controller.dart';
 import '../home/tiny_video/tiny_video_controller.dart';
+import '../music/music_controller.dart';
 import 'main_controller.dart';
 
 class MainBinding extends Bindings {
@@ -30,6 +32,12 @@ class MainBinding extends Bindings {
     );
     Get.lazyPut<HomeVideoController>(
       () => HomeVideoController(),
+    );
+    Get.lazyPut<RecommendController>(
+      () => RecommendController(),
+    );
+    Get.lazyPut<MusicController>(
+          () => MusicController(),
     );
   }
 }

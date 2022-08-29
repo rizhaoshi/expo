@@ -1,3 +1,4 @@
+import 'package:expo/app/models/recommend_interface.dart';
 import 'package:expo/app/models/user_model.dart';
 
 //文章列表模型
@@ -12,7 +13,7 @@ class ArticleList {
 }
 
 //文章详情数据模型
-class ArticleItem {
+class ArticleItem implements RecommendInterface{
   final int id;
   final int userId;
   final UserItem user; // 这个是用户模型

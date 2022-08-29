@@ -1,3 +1,4 @@
+import 'package:expo/app/models/recommend_interface.dart';
 import 'package:expo/app/models/user_model.dart';
 
 //视频列表模型
@@ -12,7 +13,7 @@ class VideoList {
 }
 
 //视频详情数据模型
-class VideoItem {
+class VideoItem implements RecommendInterface{
   final int id;
   final int userId;
   final UserItem user; // 这个是用户模型

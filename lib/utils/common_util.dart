@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class CommonUtils {
@@ -11,10 +13,7 @@ class CommonUtils {
 
   //转为rpx
   static double toRpx(BuildContext context, double size) {
-    double rpx = MediaQuery
-        .of(context)
-        .size
-        .width / 750;
+    double rpx = MediaQuery.of(context).size.width / 750;
     return size * rpx;
   }
 
@@ -33,5 +32,10 @@ class CommonUtils {
       return "${prefix}w";
     }
     return countStr;
+  }
+
+  static int getRandomRangeInt(int min, int max) {
+    final Random random = Random();
+    return min + random.nextInt(max + 1 - min);
   }
 }
