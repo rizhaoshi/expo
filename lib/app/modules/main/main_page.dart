@@ -10,7 +10,11 @@ class MainPage extends GetView<MainController> {
   @override
   Widget build(BuildContext context) {
     void _onTabClick(int index) {
-      controller.onPushPage(index);
+      if (index == 2) {
+        controller.onPushPage(index, context: context, child: _createRippleBackdrop());
+      } else {
+        controller.onPushPage(index, child: Container(), context: context);
+      }
     }
 
     final List<BottomNavigationBarItem> _bottomNavBars = [];
@@ -34,19 +38,28 @@ class MainPage extends GetView<MainController> {
           );
         },
       ),
-      floatingActionButton: _createMediaButton(),
+      floatingActionButton: _createMediaButton(context),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 
-  Widget _createMediaButton() {
+  Widget _createRippleBackdrop() {
+    return Container(
+        alignment: Alignment.bottomCenter,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [IconButton(onPressed: () {}, icon: const Icon(Icons.image)), IconButton(onPressed: () {}, icon: const Icon(Icons.video_call))],
+        ));
+  }
+
+  Widget _createMediaButton(BuildContext context) {
     return Container(
       width: 44,
       height: 44,
       margin: const EdgeInsets.only(top: 54),
       child: FloatingActionButton(
           onPressed: () {
-            controller.onPushPage(2);
+            controller.onPushPage(2, context: context, child: _createRippleBackdrop());
           },
           child: Image.asset(
             CommonUtils.getImageAssetByName("create_media"),

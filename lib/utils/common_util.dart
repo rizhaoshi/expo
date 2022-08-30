@@ -18,7 +18,7 @@ class CommonUtils {
   }
 
   static formatCharCount(int? count) {
-    if (count == null || count <= 0 || count.isNaN) return 0;
+    if (count == null || count <= 0 || count.isNaN) return "0";
     String countStr = count.toString();
     if (countStr.length >= 5) {
       String prefix = countStr.substring(0, countStr.length - 4);

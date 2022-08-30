@@ -7,6 +7,7 @@ import '../home/home_video/home_video_controller.dart';
 import '../home/singer/singer_controller.dart';
 import '../home/tiny_video/tiny_video_controller.dart';
 import '../music/music_controller.dart';
+import '../video/video_controller.dart';
 import 'main_controller.dart';
 
 class MainBinding extends Bindings {
@@ -38,6 +39,9 @@ class MainBinding extends Bindings {
     );
     Get.lazyPut<MusicController>(
           () => MusicController(),
+    );
+    Get.lazyPut<VideoController>(
+          () => VideoController(),
     );
   }
 }

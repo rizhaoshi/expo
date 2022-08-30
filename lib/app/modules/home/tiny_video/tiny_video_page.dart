@@ -1,3 +1,5 @@
+import 'package:expo/app/models/video_model.dart';
+import 'package:expo/app/modules/home/tiny_video/tiny_video_info_page.dart';
 import 'package:expo/app/widgets/tiny_video_item_widget.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter/material.dart';
@@ -36,6 +38,9 @@ class TinyVideoPage extends GetView<TinyVideoController> {
                     color: Colors.white,
                     child: TinyVideoItemView(
                       videoItem: controller.videos[index],
+                      onTap: (VideoItem videoItem) {
+                        Get.to(TinyVideoInfoPage(infoId: videoItem.id));
+                      },
                     ),
                   );
                 },

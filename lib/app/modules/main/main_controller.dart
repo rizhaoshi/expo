@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../widgets/keep_alive_widget.dart';
+import '../mine/mine_page.dart';
 import '../music/music_page.dart';
 import '../home/home_page.dart';
+import '../video/video_page.dart';
+import 'package:ripple_backdrop_animate_route/ripple_backdrop_animate_route.dart';
 
 class MainController extends GetxController {
   int currentIndex = 0;
@@ -23,8 +26,8 @@ class MainController extends GetxController {
       KeepAliveWidget(HomePage()),
       KeepAliveWidget(MusicPage()),
       KeepAliveWidget(Container()),
-      KeepAliveWidget(HomePage()),
-      KeepAliveWidget(MusicPage()),
+      KeepAliveWidget(VideoPage()),
+      KeepAliveWidget(MinePage()),
     ];
   }
 
@@ -38,15 +41,22 @@ class MainController extends GetxController {
     super.onClose();
   }
 
-  void onPushPage(int index) {
+  void onPushPage(int index, {required BuildContext context, required Widget child}) {
     if (index == 2) {
-      onPushRelease();
+      RippleBackdropAnimatePage.show(
+        context: context,
+        child: child,
+        childFade: true,
+        duration: 200,
+        blurRadius: 20,
+        bottomButton: const Icon(Icons.close),
+        bottomHeight: 60,
+        bottomButtonRotate: false,
+      );
     } else {
       pageController.animateToPage(index, duration: const Duration(milliseconds: 200), curve: Curves.ease);
     }
     currentIndex = index;
     update();
   }
-
-  void onPushRelease() {}
 }

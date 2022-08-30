@@ -27,7 +27,6 @@ class RecommendController extends GetxController {
     try {
       //请求获取数据
       List<dynamic> result = await RecommendService.getRecommendList(page: page, limit: limit);
-      print("=====$result=====");
       Iterable<RecommendInterface?> recommendList = result.map((item) {
         if (item["songEntity"] != null) {
           return SongItem.fromJson(item["songEntity"]);
@@ -37,7 +36,6 @@ class RecommendController extends GetxController {
           return VideoItem.fromJson(item["videoEntity"]);
         }
       }).toList();
-      print("=====$recommendList=====");
       // 将数据转成实体类
       page++;
       if (push) {

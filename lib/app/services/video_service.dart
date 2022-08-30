@@ -14,4 +14,12 @@ class VideoService {
     Map<String, dynamic> result = response['page'];
     return result;
   }
+
+  static Future getVideoInfo(int id) async {
+    final response = await Network.get(
+      "$infoUrl/$id",
+    );
+    Map<String, dynamic> info = response['info'];
+    return info;
+  }
 }

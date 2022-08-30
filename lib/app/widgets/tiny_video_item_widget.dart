@@ -6,29 +6,36 @@ import 'package:flutter/material.dart';
 
 class TinyVideoItemView extends StatelessWidget {
   final VideoItem videoItem;
+  final ValueChanged<VideoItem> onTap;
 
-  const TinyVideoItemView({Key? key, required this.videoItem}) : super(key: key);
+  const TinyVideoItemView({Key? key, required this.videoItem, required this.onTap}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        _cover(),
-        Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8),
-            child: AvatarRoleName(
-              avatar: videoItem.user.coverPictureUrl,
-              nickname: videoItem.user.nickname,
-              showType: false,
-              type: videoItem.user.type,
-            )),
-        CommentLikeRead(
-          commentCount: videoItem.commentCount,
-          thumbUpCount: videoItem.thumbUpCount,
-          readCount: videoItem.readCount,
-        ),
-      ],
-    );
+    return InkWell(
+        onTap: () {
+          if (onTap != null) {
+            onTap(videoItem);
+          }
+        },
+        child: Column(
+          children: [
+            _cover(),
+            Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                child: AvatarRoleName(
+                  avatar: videoItem.user.coverPictureUrl,
+                  nickname: videoItem.user.nickname,
+                  showType: false,
+                  type: videoItem.user.type,
+                )),
+            CommentLikeRead(
+              commentCount: videoItem.commentCount,
+              thumbUpCount: videoItem.thumbUpCount,
+              readCount: videoItem.readCount,
+            ),
+          ],
+        ));
   }
 
   Widget _cover() {
