@@ -1,4 +1,5 @@
 import 'package:expo/app/models/video_model.dart';
+import 'package:expo/app/modules/home/tiny_video/tiny_video_info_page.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:expo/common/config/api_config.dart';
 import 'package:get/get.dart';
@@ -62,5 +63,9 @@ class TinyVideoController extends GetxController {
   @override
   void onClose() {
     super.onClose();
+  }
+
+  void onPushTinyVideoInfoPage(int id) {
+    Get.to(TinyVideoInfoPage(infoId: id));
   }
 }

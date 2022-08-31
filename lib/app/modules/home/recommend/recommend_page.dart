@@ -48,9 +48,16 @@ class RecommendPage extends GetView<RecommendController> {
     if (interface is SongItem) {
       return _columnBox(SongItemView(songItem: interface));
     } else if (interface is ArticleItem) {
-      return _columnBox(ArticleItemView(articleItem: interface));
+      return _columnBox(ArticleItemView(articleItem: interface,onTap: (ArticleItem articleItem){
+        controller.onPushArticleInfoPage(articleItem);
+      },));
     } else if (interface is VideoItem) {
-      return _columnBox(VideoItemView(videoItem: interface));
+      return _columnBox(VideoItemView(
+        videoItem: interface,
+        onTap: (VideoItem videoItem) {
+          controller.onPushVideoInfoPage(videoItem);
+        },
+      ));
     } else {
       return const SizedBox.shrink();
     }

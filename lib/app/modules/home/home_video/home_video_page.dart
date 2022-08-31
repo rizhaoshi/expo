@@ -1,6 +1,7 @@
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../models/video_model.dart';
 import '../../../widgets/video_item_widget.dart';
 import 'home_video_controller.dart';
 
@@ -34,7 +35,12 @@ class HomeVideoPage extends GetView<HomeVideoController> {
                     return Column(
                       children: [
                         const SizedBox(height: 5),
-                       VideoItemView(videoItem: controller.videos[index]),
+                        VideoItemView(
+                          videoItem: controller.videos[index],
+                          onTap:(VideoItem videoItem){
+                            controller.onPushVideoInfoPage(videoItem);
+                          }
+                        ),
                       ],
                     );
                   }));

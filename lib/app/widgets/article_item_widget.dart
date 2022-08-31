@@ -7,8 +7,9 @@ import 'package:flutter/material.dart';
 
 class ArticleItemView extends StatefulWidget {
   final ArticleItem articleItem;
+  final ValueChanged<ArticleItem> onTap;
 
-  const ArticleItemView({Key? key, required this.articleItem}) : super(key: key);
+  const ArticleItemView({Key? key, required this.articleItem, required this.onTap}) : super(key: key);
 
   @override
   State<ArticleItemView> createState() => _ArticleItemViewState();
@@ -23,20 +24,25 @@ class _ArticleItemViewState extends State<ArticleItemView> {
   @override
   Widget build(BuildContext context) {
     boxSize = MediaQuery.of(context).size.width - paddingSize * 2;
-    return Container(
-      padding: const EdgeInsets.all(15),
-      color: Colors.white,
-      width: double.infinity,
-      child: Column(
-        // mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _title(),
-          const SizedBox(height: spaceSize),
-          _getCoverByType(),
-          const SizedBox(height: spaceSize),
-          _bottom(),
-        ],
+    return InkWell(
+      onTap: () {
+        widget.onTap(widget.articleItem);
+      },
+      child: Container(
+        padding: const EdgeInsets.all(15),
+        color: Colors.white,
+        width: double.infinity,
+        child: Column(
+          // mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _title(),
+            const SizedBox(height: spaceSize),
+            _getCoverByType(),
+            const SizedBox(height: spaceSize),
+            _bottom(),
+          ],
+        ),
       ),
     );
   }

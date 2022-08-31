@@ -2,6 +2,7 @@ import 'package:expo/app/models/video_model.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:expo/common/config/api_config.dart';
 import 'package:get/get.dart';
+import '../../../../routes/app_routes.dart';
 import '../../../services/video_service.dart';
 
 class HomeVideoController extends GetxController {
@@ -62,5 +63,12 @@ class HomeVideoController extends GetxController {
   @override
   void onClose() {
     super.onClose();
+  }
+
+  void onPushVideoInfoPage(VideoItem videoItem) {
+    Get.toNamed(
+      Routes.VIDEO_INFO,
+      arguments: {'videoItem': videoItem},
+    );
   }
 }

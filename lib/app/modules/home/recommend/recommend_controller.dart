@@ -1,8 +1,10 @@
 import 'package:expo/app/models/article_model.dart';
 import 'package:expo/app/models/song_model.dart';
+import 'package:expo/app/modules/home/article/article_info_page.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:get/get.dart';
 import '../../../../common/config/api_config.dart';
+import '../../../../routes/app_routes.dart';
 import '../../../models/recommend_interface.dart';
 import '../../../models/video_model.dart';
 import '../../../services/recommend_service.dart';
@@ -73,5 +75,16 @@ class RecommendController extends GetxController {
   @override
   void onClose() {
     super.onClose();
+  }
+
+  void onPushVideoInfoPage(VideoItem videoItem) {
+    Get.toNamed(
+      Routes.VIDEO_INFO,
+      arguments: {'videoItem': videoItem},
+    );
+  }
+
+  void onPushArticleInfoPage(ArticleItem articleItem) {
+    Get.to(ArticleInfoPage(articleItem: articleItem));
   }
 }

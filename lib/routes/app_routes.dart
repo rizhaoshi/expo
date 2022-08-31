@@ -5,6 +5,7 @@ import '../app/modules/home/article/article_page.dart';
 import '../app/modules/home/home_binding.dart';
 import '../app/modules/home/home_page.dart';
 import '../app/modules/home/home_video/home_video_binding.dart';
+import '../app/modules/home/home_video/home_video_info_page.dart';
 import '../app/modules/home/home_video/home_video_page.dart';
 import '../app/modules/home/recommend/recommend_binding.dart';
 import '../app/modules/home/recommend/recommend_page.dart';
@@ -38,6 +39,7 @@ abstract class AppPages {
     GetPage(name: Routes.TINY_VIDEO, page: () => TinyVideoPage(), binding: TinyVideoBinding()),
     GetPage(name: Routes.ARTICLE, page: () => ArticlePage(), binding: ArticleBinding()),
     GetPage(name: Routes.HOME_VIDEO, page: () => HomeVideoPage(), binding: HomeVideoBinding()),
+    GetPage(name: Routes.VIDEO_INFO, page: () => HomeVideoInfoPage(), binding: VideoBinding()),
     GetPage(name: Routes.RECOMMEND, page: () => RecommendPage(), binding: RecommendBinding()),
   ];
 }
@@ -82,6 +84,9 @@ abstract class Routes {
 
   //视频
   static const HOME_VIDEO = "/home_video";
+
+  //视频详情
+  static const VIDEO_INFO = "/video_info";
 
   //推荐
   static const RECOMMEND = "/recommend";

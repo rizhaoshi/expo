@@ -1,7 +1,9 @@
+import 'package:expo/app/modules/home/article/article_info_page.dart';
 import 'package:expo/app/widgets/article_item_widget.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../models/article_model.dart';
 import 'article_controller.dart';
 
 class ArticlePage extends GetView<ArticleController> {
@@ -34,7 +36,12 @@ class ArticlePage extends GetView<ArticleController> {
                     return Column(
                       children: [
                         const SizedBox(height: 5),
-                        ArticleItemView(articleItem: controller.articles[index]),
+                        ArticleItemView(
+                          articleItem: controller.articles[index],
+                          onTap: (ArticleItem articleItem) {
+                           controller.onPushArticleInfoPage(articleItem);
+                          },
+                        ),
                       ],
                     );
                   }));

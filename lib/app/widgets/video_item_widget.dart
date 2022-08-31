@@ -8,8 +8,9 @@ import '../models/video_model.dart';
 
 class VideoItemView extends StatefulWidget {
   final VideoItem videoItem;
+  final ValueChanged<VideoItem> onTap;
 
-  const VideoItemView({Key? key, required this.videoItem}) : super(key: key);
+  const VideoItemView({Key? key, required this.videoItem, required this.onTap}) : super(key: key);
 
   @override
   State<VideoItemView> createState() => _VideoItemViewState();
@@ -24,20 +25,27 @@ class _VideoItemViewState extends State<VideoItemView> {
   @override
   Widget build(BuildContext context) {
     boxSize = MediaQuery.of(context).size.width - paddingSize * 2;
-    return Container(
-      padding: const EdgeInsets.all(15),
-      color: Colors.white,
-      width: double.infinity,
-      child: Column(
-        // mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _title(),
-          const SizedBox(height: 10),
-          _cover(),
-          const SizedBox(height: 10),
-          _bottom(),
-        ],
+    return InkWell(
+      onTap: () {
+        if (widget.onTap != null) {
+          widget.onTap(widget.videoItem);
+        }
+      },
+      child: Container(
+        padding: const EdgeInsets.all(15),
+        color: Colors.white,
+        width: double.infinity,
+        child: Column(
+          // mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _title(),
+            const SizedBox(height: 10),
+            _cover(),
+            const SizedBox(height: 10),
+            _bottom(),
+          ],
+        ),
       ),
     );
   }
@@ -69,7 +77,7 @@ class _VideoItemViewState extends State<VideoItemView> {
               right: 10,
               bottom: 10,
               child: Container(
-                padding:const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+                padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
                 decoration: BoxDecoration(color: Colors.black.withOpacity(0.4), borderRadius: BorderRadius.circular(4)),
                 child: Text(
                   DateUtil.secondsToTime(widget.videoItem.contentSeconds),

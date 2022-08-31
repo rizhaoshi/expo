@@ -39,7 +39,7 @@ class TinyVideoPage extends GetView<TinyVideoController> {
                     child: TinyVideoItemView(
                       videoItem: controller.videos[index],
                       onTap: (VideoItem videoItem) {
-                        Get.to(TinyVideoInfoPage(infoId: videoItem.id));
+                       controller.onPushTinyVideoInfoPage(videoItem.id);
                       },
                     ),
                   );

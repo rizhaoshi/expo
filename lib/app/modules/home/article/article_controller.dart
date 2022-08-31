@@ -4,6 +4,8 @@ import '../../../models/article_model.dart';
 import '../../../services/article_service.dart';
 import 'package:get/get.dart';
 
+import 'article_info_page.dart';
+
 class ArticleController extends GetxController {
   late EasyRefreshController refreshController;
   List<ArticleItem> articles = ArticleList([]).list;
@@ -62,5 +64,9 @@ class ArticleController extends GetxController {
   @override
   void onClose() {
     super.onClose();
+  }
+
+  void onPushArticleInfoPage(ArticleItem articleItem) {
+    Get.to(ArticleInfoPage(articleItem: articleItem));
   }
 }
