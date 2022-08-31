@@ -1,3 +1,4 @@
+import 'package:ripple_backdrop_animate_route/ripple_backdrop_animate_route.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../widgets/keep_alive_widget.dart';
@@ -5,7 +6,7 @@ import '../mine/mine_page.dart';
 import '../music/music_page.dart';
 import '../home/home_page.dart';
 import '../video/video_page.dart';
-import 'package:ripple_backdrop_animate_route/ripple_backdrop_animate_route.dart';
+
 
 class MainController extends GetxController {
   int currentIndex = 0;

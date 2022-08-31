@@ -107,10 +107,8 @@ class _VideoPageState extends State<VideoPage> {
             return TinyVideoPlayer(videoItem: videos[index]);
           });
     }
-    return GetBuilder<VideoController>(builder: (ctr) {
-      return Scaffold(
-        body: _body,
-      );
-    });
+    return Scaffold(
+      body: _body,
+    );
   }
 }

@@ -32,7 +32,7 @@ abstract class AppPages {
     GetPage(name: Routes.MAIN, page: () => MainPage(), binding: MainBinding()),
     GetPage(name: Routes.HOME, page: () => HomePage(), binding: HomeBinding()),
     GetPage(name: Routes.MUSIC, page: () => MusicPage(), binding: MusicBinding()),
-    GetPage(name: Routes.VIDEO, page: () => VideoPage(), binding: VideoBinding()),
+    GetPage(name: Routes.VIDEO, page: () => VideoPage()),
     GetPage(name: Routes.MINE, page: () => MinePage(), binding: MineBinding()),
     GetPage(name: Routes.SONG, page: () => SongPage(), binding: SongBinding()),
     GetPage(name: Routes.SINGER, page: () => SingerPage(), binding: SingerBinding()),
